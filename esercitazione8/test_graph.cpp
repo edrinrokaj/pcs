@@ -4,7 +4,7 @@
 int main() {
     
     unidirected_edge e1(1, 3);
-    unidirected_edge e2(3, 1); // invertito
+    unidirected_edge e2(3, 1);
     
     if (e1.from() != 1 || e1.to() != 3) {
         std::cerr << "from/to errato\n";
@@ -132,6 +132,14 @@ int main() {
     std::cout << "Archi numerati:\n";
     for (auto& edge : g.all_edges()) {
         std::cout << "arco " << g.edge_number(edge) << ": " << edge << "\n";
+    }
+
+    std::cout << "Lista di adiacenza:\n";
+    for (auto& node : g.all_nodes()) {
+        std::cout << node << " -> [ ";
+        for (auto& neighbour : g.neighbours(node))
+            std::cout << neighbour << " ";
+        std::cout << "]\n";
     }
     
     return EXIT_SUCCESS;
